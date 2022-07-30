@@ -8,9 +8,11 @@ describe('Money', () => {
       expect(five.times(2).toEquals(new Dollar(10))).toBeTruthy()
       expect(five.times(3).toEquals(new Dollar(15))).toBeTruthy()
     })
-    it('Should return true when dollars of the same value are compared', () => {
+    it('Should return true when dollars and euros of the same value are compared', () => {
       expect(new Dollar(10).toEquals(new Dollar(10))).toBeTruthy()
       expect(new Dollar(5).toEquals(new Dollar(10))).toBeFalsy()
+      expect(new Euro(10).toEquals(new Euro(10))).toBeTruthy()
+      expect(new Euro(5).toEquals(new Euro(10))).toBeFalsy()
     })
   })
   describe('Euro', () => {
