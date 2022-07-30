@@ -1,7 +1,7 @@
 import { Dollar } from './dollar'
 
 describe('Dollar', () => {
-  it('Should return 10 when five dollars are multiplied by two', () => {
+  it('Should return 10 when five dollars are multiplied by two and 15 when multiplied by three', () => {
     const five: Dollar = new Dollar(5)
     expect(five.times(2).toEquals(new Dollar(10))).toBeTruthy()
     expect(five.times(3).toEquals(new Dollar(15))).toBeTruthy()
