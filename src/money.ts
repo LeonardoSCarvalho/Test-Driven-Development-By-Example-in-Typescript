@@ -1,12 +1,17 @@
 export abstract class Money {
   public amount: number
+  public _currency: string
+  constructor (amount: number, currency: string) {
+    this.amount = amount
+    this._currency = currency
+  }
 
   static dollar (amount: number):Money {
-    return new Dollar(amount)
+    return new Dollar(amount, 'USD')
   }
 
   static euro (amount: number):Money {
-    return new Euro(amount)
+    return new Euro(amount, 'EUR')
   }
 
   toEquals (other: Money): boolean {
@@ -14,27 +19,21 @@ export abstract class Money {
     return this.amount === other.amount
   }
 
+  currency (): string {
+    return this._currency
+  }
+
   abstract times(multiplier:number): Money
 }
 
 export class Dollar extends Money {
-  constructor (amount: number) {
-    super()
-    super.amount = amount
-  }
-
   times (multiplier: number):Dollar {
-    return new Dollar(this.amount * multiplier)
+    return Money.dollar(this.amount * multiplier)
   }
 }
 
 export class Euro extends Money {
-  constructor (amount: number) {
-    super()
-    super.amount = amount
-  }
-
   times (multiplier: number): Euro {
-    return new Euro(this.amount * multiplier)
+    return Money.euro(this.amount * multiplier)
   }
 }
