@@ -6,8 +6,8 @@ import { Sum } from './sum'
 describe('Money', () => {
   it('Should handle dollar multiplication', () => {
     const five: Money = Money.dollar(5)
-    expect(five.times(2).toEquals(Money.dollar(10))).toBeTruthy()
-    expect(five.times(3).toEquals(Money.dollar(15))).toBeTruthy()
+    expect(five.times(2)).toEqual(Money.dollar(10))
+    expect(five.times(3)).toEqual(Money.dollar(15))
   })
 
   it('Should handle equality', () => {
@@ -59,5 +59,14 @@ describe('Money', () => {
 
   it('Should handle indetity rate', () => {
     expect(new Bank().rate('USD', 'USD')).toEqual(1)
+  })
+
+  it('Should handle mixed addition', () => {
+    const fiveBucks: Expression = Money.dollar(5)
+    const tenEuros: Expression = Money.euro(10)
+    const bank = new Bank()
+    bank.addRate('EUR', 'USD', 2)
+    const result = bank.reduce(fiveBucks.plus(tenEuros), 'USD')
+    expect(result).toEqual(Money.dollar(10))
   })
 })
