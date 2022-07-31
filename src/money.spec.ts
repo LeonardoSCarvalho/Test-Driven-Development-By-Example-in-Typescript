@@ -10,16 +10,7 @@ describe('Money', () => {
   it('Should correctly handle equality', () => {
     expect(Money.dollar(10).toEquals(Money.dollar(10))).toBeTruthy()
     expect(Money.dollar(5).toEquals(Money.dollar(10))).toBeFalsy()
-    expect(Money.euro(10).toEquals(Money.euro(10))).toBeTruthy()
-    expect(Money.euro(5).toEquals(Money.euro(10))).toBeFalsy()
     expect(Money.euro(10).toEquals(Money.dollar(10))).toBeFalsy()
-    expect(new Money(5, 'USD').toEquals(Money.dollar(5))).toBeTruthy()
-  })
-
-  it('Should correctly handle euro multiplication', () => {
-    const five: Money = Money.euro(5)
-    expect(five.times(2).toEquals(Money.euro(10))).toBeTruthy()
-    expect(five.times(3).toEquals(Money.euro(15))).toBeTruthy()
   })
 
   it('Should correctly handle currencies', () => {
