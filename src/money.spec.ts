@@ -13,6 +13,7 @@ describe('Money', () => {
     expect(Money.euro(10).toEquals(Money.euro(10))).toBeTruthy()
     expect(Money.euro(5).toEquals(Money.euro(10))).toBeFalsy()
     expect(Money.euro(10).toEquals(Money.dollar(10))).toBeFalsy()
+    expect(new Money(5, 'USD').toEquals(Money.dollar(5))).toBeTruthy()
   })
 
   it('Should correctly handle euro multiplication', () => {
